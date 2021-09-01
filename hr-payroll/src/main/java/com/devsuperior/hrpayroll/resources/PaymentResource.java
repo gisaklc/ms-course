@@ -1,7 +1,5 @@
 package com.devsuperior.hrpayroll.resources;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +17,14 @@ public class PaymentResource {
 	@Autowired
 	private PaymentService paymentService;
 
-	@GetMapping(value="/{workeId}/days/{days}")
-	public ResponseEntity<Payment> findPayment(@PathVariable long workeId, @PathVariable Integer days) {
+//	@GetMapping(value="/{workeId}/days/{days}")
+//	public ResponseEntity<Payment> findPayment(@PathVariable long workeId, @PathVariable Integer days) {
+//		Payment payment = paymentService.getPayment(workeId, days);
+//		return ResponseEntity.ok().body(payment);
+//	}
+
+	@GetMapping(value = "/{workeId}/days/{days}")
+	public ResponseEntity<Payment> findPayment(@PathVariable Long workeId, @PathVariable Integer days) {
 		Payment payment = paymentService.getPayment(workeId, days);
 		return ResponseEntity.ok().body(payment);
 	}
