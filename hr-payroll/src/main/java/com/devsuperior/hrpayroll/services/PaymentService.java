@@ -1,15 +1,11 @@
 package com.devsuperior.hrpayroll.services;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import com.devsuperior.hrpayroll.entities.Payment;
 import com.devsuperior.hrpayroll.entities.Worker;
+import com.devsuperior.hrpayroll.feingClients.WorkerFeingClient;
 
 /**
  * Foi criado so o service pois esse projeto nao terá bancos de dados Anotado
@@ -18,26 +14,13 @@ import com.devsuperior.hrpayroll.entities.Worker;
 @Service
 public class PaymentService {
 
-//	@Autowired
-//	private WorkerFeignClient workerFeignClient;
-
 	@Autowired
-	private RestTemplate restTemplate;
-
-	@Value("${hr-worker.host}") // recupera o caminho do arquivo properties
-	private String host;
-
-//	public Payment getPayment(long workerId, int days) {
-//		// Worker worker = workerFeignClient.findById(workerId).getBody();
-//		return new Payment("Bob", 200.0, days);
-//		// return new Payment(worker.getName(), worker.getDailyIncome(), days);
-//	}
+	private WorkerFeingClient workerFeingClient;
 
 	
 	public Payment getPayment(long workerId, int days) {
-		Map<String, String> uriVariables = new HashMap<>();
-		uriVariables.put("id", ""+ workerId); // pra referenciar com o {id} da url
-		Worker worker = restTemplate.getForObject(host + "/workes/{id}", Worker.class, uriVariables);
+		//busca o trabalhador usando o feeing
+		Worker worker = workerFeingClient.findById(workerId).getBody();
 		return new Payment(worker.getName(), worker.getDailyIncome(), days);
 
 	}

@@ -12,7 +12,7 @@ import com.devsuperior.hrworker.services.WorkerService;
 import javassist.tools.rmi.ObjectNotFoundException;
 
 @RestController
-@RequestMapping(value = "/workes")
+@RequestMapping(value = "/workers")
 public class WorkerResource {
 
 	@Autowired
