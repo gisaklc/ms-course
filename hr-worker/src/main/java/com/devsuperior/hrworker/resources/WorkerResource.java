@@ -42,10 +42,8 @@ public class WorkerResource {
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Worker> findById(@PathVariable Long id) throws ObjectNotFoundException {
-		
 		/*** imprimir o numero da porta rodando**/
 		logger.info("PORT = " + env.getProperty("local.server.port"));
-		
 		Worker worker = workService.findById(id);
 		return ResponseEntity.ok().body(worker);
 	}
