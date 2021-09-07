@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.devsuperior.hrpayroll.entities.Payment;
 import com.devsuperior.hrpayroll.services.PaymentService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.ribbon.proxy.annotation.Hystrix;
 
 @RestController
 @RequestMapping(value = "/payments")
