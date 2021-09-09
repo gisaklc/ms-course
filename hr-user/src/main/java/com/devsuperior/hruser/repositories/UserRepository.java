@@ -1,4 +1,4 @@
-package com.devsuperior.repositories;
+package com.devsuperior.hruser.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
